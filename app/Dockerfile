@@ -1,0 +1,10 @@
+FROM python:3.10.6
+WORKDIR /usr/app
+
+# install dependencies
+RUN pip install --upgrade pip
+COPY ./requirements.txt /usr/app/requirements.txt 
+RUN chmod +x /usr/app/requirements.txt
+RUN pip install -r requirements.txt
+# copy project
+COPY . /usr/app/
