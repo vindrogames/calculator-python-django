@@ -8,3 +8,5 @@ RUN chmod +x /usr/app/requirements.txt
 RUN pip install -r requirements.txt
 # copy project
 COPY . /usr/app/
+
+EXPOSE 8000

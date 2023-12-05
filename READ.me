@@ -1,0 +1,6 @@
+az containerapp up --location "France Central" --name calculatordjango --source app --resource-group fgimenez-container-instance --environment calculatordjango-env --ingress external
+
+az containerapp compose create --environment calculatordjango-env-new \
+                               --resource-group fgimenez-container-instancedos \
+                               --compose-file-path "docker-compose.yml" \
+                               --location "France Central"
