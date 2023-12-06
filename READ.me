@@ -4,3 +4,15 @@ az containerapp compose create --environment calculatordjango-env-new \
                                --resource-group fgimenez-container-instancedos \
                                --compose-file-path "docker-compose.yml" \
                                --location "France Central"
+
+az containerapp up \
+  --name calculatordjango \
+  --resource-group fgimenez-container-instance \
+  --location "France Central" \
+  --environment 'calculatordjango-env' \
+  --target-port 8000 \
+  --ingress external \
+  --source app \
+  --query properties.configuration.ingress.fqdn
+
+az containerapp up --name calculatordjango --resource-group fgimenez-container-instance --location "westeurope" --environment 'calculatordjango-env' --target-port 8000 --ingress external --source app --query properties.configuration.ingress.fqdn

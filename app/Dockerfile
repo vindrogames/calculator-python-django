@@ -9,4 +9,6 @@ RUN pip install -r requirements.txt
 # copy project
 COPY . /usr/app/
 
+CMD ["python", "/usr/app/manage.py", "runserver", "0.0.0.0:8000"]
+
 EXPOSE 8000
