@@ -19,8 +19,29 @@
     <link href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/sticky-footer.css" rel="stylesheet">
   </head>
 
-  <body>
+  
+
+  <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+    
     <main role="main" class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">        
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/ferjavascript">Fer Javascript</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/maikjavascript">Maik Javascript</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="/ferhtmx">Fer HTMX</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
       <h1 class="mt-5">Maik y Fer Javascript-Django calculator playground</h1>
       <p class="lead">Aqui podemos hacer nuestros test de Javascript</p>
       <p>Estos son los endpoints disponibles</p>
@@ -31,44 +52,7 @@
       <p>para llamar a la API hay que poner suma/ y pasar los parametros op1 y op2, deberia devolver el resultado</p>
       <a href="suma/?op1=4&op2=7">ejemplo de suma</a> <br />
       <a href="resta/?op1=15&op2=5">ejemplo de resta</a>
-      <h1 class="mt-4">Fer Javascript</h1>
-      <div>
-        <p>
-            <script type="text/javascript">
-                function sumar()
-                {   
-                    const xhttp = new XMLHttpRequest();
-                    const elem = document.getElementById("resultado");
-                    const operando1 = document.getElementById("operando1").value;
-                    const operando2 = document.getElementById("operando2").value;
-                    url_suma = "suma/"+"?op1="+operando1+"&op2="+operando2;
-                    console.log(url_suma);
-                    xhttp.open("GET", url_suma, false);
-                    xhttp.send();
-                    elem.innerHTML = xhttp.responseText;                    
-                }
-                function restar()
-                {   
-                    const xhttp = new XMLHttpRequest();
-                    const elem = document.getElementById("resultado");
-                    const operando1 = document.getElementById("operando1").value;
-                    const operando2 = document.getElementById("operando2").value;
-                    url_suma = "resta/"+"?op1="+operando1+"&op2="+operando2;
-                    console.log(url_suma);
-                    xhttp.open("GET", url_suma, false);
-                    xhttp.send();
-                    elem.innerHTML = xhttp.responseText;                    
-                }
-            </script>
-            <input id="operando1" type="number" value="7" />
-            <input id="operando2" type="number" value="5" />
-            <button onclick="sumar();">sumar</button>
-            <button onclick="restar();">restar</button>
-            <div id="resultado">
-                0
-            </div>
-        </p>
-      </div>
+      {% block content %}{% endblock content %}
     </main>
   </body>
 </html>
