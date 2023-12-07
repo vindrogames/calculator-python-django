@@ -16,3 +16,8 @@ def resta(request):
     resta = int(operando_uno) - int(operando_dos)
     return HttpResponse(resta)
 
+def mult(request):
+    operando_uno = request.GET['op1']
+    operando_dos = request.GET['op2']
+    resta = int(operando_uno) - int(operando_dos)
+    return HttpResponse(resta)
