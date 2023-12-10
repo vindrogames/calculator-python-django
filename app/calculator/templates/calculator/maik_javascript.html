@@ -1,43 +1,9 @@
 
-{% extends "calculator/index.html" %}
+{% extends "calculator/base.html" %}
 
 {% block content %}
-<h1 class="mt-4">Fer Javascript</h1>
+<h1 class="mt-4">Maik Javascript? o lo que quieras</h1>
 <div>
-  <p>      
-      <input id="operando1" type="number" value="7" />
-      <input id="operando2" type="number" value="5" />
-      <button onclick="sumar();">sumar</button>
-      <button onclick="restar();">restar</button>
-      <div id="resultado">
-          0
-      </div>
-  </p>
+  
 </div>
-<script type="text/javascript">
-  function sumar()
-  {   
-      const xhttp = new XMLHttpRequest();
-      const elem = document.getElementById("resultado");
-      const operando1 = document.getElementById("operando1").value;
-      const operando2 = document.getElementById("operando2").value;
-      url_suma = "/suma/"+"?op1="+operando1+"&op2="+operando2;
-      console.log(url_suma);
-      xhttp.open("GET", url_suma, false);
-      xhttp.send();
-      elem.innerHTML = xhttp.responseText;                    
-  }
-  function restar()
-  {   
-      const xhttp = new XMLHttpRequest();
-      const elem = document.getElementById("resultado");
-      const operando1 = document.getElementById("operando1").value;
-      const operando2 = document.getElementById("operando2").value;
-      url_suma = "/resta/"+"?op1="+operando1+"&op2="+operando2;
-      console.log(url_suma);
-      xhttp.open("GET", url_suma, false);
-      xhttp.send();
-      elem.innerHTML = xhttp.responseText;                    
-  }
-</script>
 {% endblock content %}

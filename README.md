@@ -1,4 +1,11 @@
+## Fly.io
 
+deployment
+
+```
+fly auth login
+fly deploy
+```
 
 ## HTMX
 
