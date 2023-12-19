@@ -1,0 +1,23 @@
+
+{% extends "calculator/base.html" %}
+
+{% block content %}
+<h1 class="mt-4">Fer XTMX</h1>
+<script src="https://unpkg.com/htmx.org@1.9.9"></script>  
+<div>
+    
+  <button hx-get="/suma/?op1=4&op2=7" hx-swap="outerHTML">
+        Click Me
+  </button>
+
+  <p>      
+    <input name="op1" type="number" value="7" />
+    <input name="op2" id="operando2" type="number" value="5" />
+    <button hx-get="/suma" hx-target="#resultado" hx-swap="innerHTML" hx-include="[name='op1'],[name='op2']">sumar</button>
+    <button hx-get="/resta" hx-target="#resultado" hx-swap="innerHTML" hx-include="[name='op1'],[name='op2']">restar</button>
+    <div id="resultado">
+        0
+    </div>
+</p>
+</div>
+{% endblock content %}
