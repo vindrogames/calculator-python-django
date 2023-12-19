@@ -4,8 +4,8 @@ from . import views
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("suma/", views.suma, name="suma"),
-    path("resta/", views.resta, name="resta"),
+    path("/suma/", views.suma, name="suma"),
+    path("/resta/", views.resta, name="resta"),
     path('ferjavascript/', TemplateView.as_view(template_name='calculator/fer_javascript.html')),
     path('maikjavascript/', TemplateView.as_view(template_name='calculator/maik_javascript.html')),
     path('ferhtmx/', TemplateView.as_view(template_name='calculator/fer_htmx.html')),
