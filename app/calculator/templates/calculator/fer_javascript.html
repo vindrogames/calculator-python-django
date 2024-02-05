@@ -20,15 +20,15 @@
         <button id="clear" class="button clear">C</button>
         <button id="pos-neg" class="button pos-neg">+/-</button>
         <button id="percent" class="button">%</button>
-        <button id="divide" class="button operator">&divide;</button>
+        <button id="divide" class="button operator"  onclick="operation_clicked('divide');">&divide;</button>
         <button id="seven" class="button" value="7" onclick="number_clicked(7);">7</button>
         <button id="eight" class="button" value="8" onclick="number_clicked(8);">8</button>
         <button id="nine" class="button" value="9" onclick="number_clicked(9);">9</button>
-        <button id="multiply" class="button operator">&times;</button>
+        <button id="multiply" class="button operator"  onclick="operation_clicked('mult');">&times;</button>
         <button id="four" class="button" value="4" onclick="number_clicked(4);">4</button>
         <button id="five" class="button" value="5" onclick="number_clicked(5);">5</button>
         <button id="six" class="button" value="6" onclick="number_clicked(6);">6</button>
-        <button id="minus" class="button operator">&minus;</button>
+        <button id="minus" class="button operator"  onclick="operation_clicked('resta');">&minus; </button>
         <button id="one" class="button" value="1" onclick="number_clicked(1);">1</button>
         <button id="two" class="button" value="2" onclick="number_clicked(2);">2</button>
         <button id="three" class="button" value="3" onclick="number_clicked(3);">3</button>
@@ -90,23 +90,39 @@
     else
     {
         first_operand_finished = true;
-        second_operand_finished = true;
+        second_operand_finished = true;        
+        console.log(first_operand);
+        console.log(second_operand);
+        const xhttp = new XMLHttpRequest();
+        const elem = document.getElementById("top-bar");
+        url_backend_op = ""
         if (operation_option === "add")
         {
-            console.log(first_operand);
-            console.log(second_operand);
-            const xhttp = new XMLHttpRequest();
-            const elem = document.getElementById("top-bar");            
-            url_suma = "/suma/"+"?op1="+first_operand+"&op2="+second_operand;
-            console.log(url_suma);
-            xhttp.open("GET", url_suma, false);
-            xhttp.send();
-            elem.innerHTML = xhttp.responseText; 
-            first_operand_finished = false;
-            second_operand_finished = false;
-            first_operand = "";
-            second_operand = "";
+            url_backend_op = "/suma/"+"?op1="+first_operand+"&op2="+second_operand;
         }
+        else if (operation_option === "resta")
+        {
+            url_backend_op = "/resta/"+"?op1="+first_operand+"&op2="+second_operand;
+        }
+        else if (operation_option === "mult")
+        {
+            url_backend_op = "/mult/"+"?op1="+first_operand+"&op2="+second_operand;
+        }
+        else if (operation_option === "divide")
+        {
+            url_backend_op = "/divide/"+"?op1="+first_operand+"&op2="+second_operand;
+        }
+        else 
+        {
+            url_backend_op = "/suma/"+"?op1="+first_operand+"&op2="+second_operand;
+        }
+        xhttp.open("GET", url_backend_op, false);
+        xhttp.send();
+        elem.innerHTML = xhttp.responseText; 
+        first_operand_finished = false;
+        second_operand_finished = false;
+        first_operand = elem.innerHTML;
+        second_operand = "";        
     }        
   }
 

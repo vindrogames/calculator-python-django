@@ -19,8 +19,14 @@ def resta(request):
 def mult(request):
     operando_uno = request.GET['op1']
     operando_dos = request.GET['op2']
-    resta = int(operando_uno) - int(operando_dos)
-    return HttpResponse(resta)
+    mult = int(operando_uno) * int(operando_dos)
+    return HttpResponse(mult)
+
+def divide(request):
+    operando_uno = request.GET['op1']
+    operando_dos = request.GET['op2']
+    div = int(operando_uno) / int(operando_dos)
+    return HttpResponse(div)
 
 def clicked(request):
     return HttpResponse("htmx works!")
