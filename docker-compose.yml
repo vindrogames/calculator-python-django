@@ -13,15 +13,14 @@ services:
       - 4000:8000
     env_file:
       - ./env/django.env
-  tailwind:
+  node_css_packages:
     image: "node:lts"
     volumes:
       - ./app/:/usr/app/
     working_dir: /usr/app/        
-    #command: >
-    #  bash -c "npm install -D tailwindcss      
-    #  && npm exec tailwindcss -i /usr/app/calculator/static/calculator/css/main.css -o /usr/app/calculator/static/calculator/css/feroutput.css --watch"
-    command: npm exec tailwindcss -i /usr/app/calculator/static/calculator/css/main.css -o /usr/app/calculator/static/calculator/css/feroutput.css --watch
+    command: >
+      bash -c "npm install && npm run sass"
+
     tty: true
       
 

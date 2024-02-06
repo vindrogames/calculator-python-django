@@ -1,5 +1,11 @@
 {
   "devDependencies": {
     "tailwindcss": "^3.4.1"
+  },
+  "scripts": {
+    "sass": "sass -w scss/main.scss:calculator/static/calculator/css/main.css"
+  },
+  "dependencies": {
+    "sass": "^1.70.0"
   }
 }
