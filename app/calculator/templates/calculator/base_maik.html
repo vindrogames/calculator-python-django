@@ -1,0 +1,58 @@
+
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Javascript Django CalculatorPlayground</title>
+
+    <!-- CSS Maik, the good shit-->
+    <link rel="stylesheet" href="{% static 'calculator/css/main.css' %}">
+
+    <!-- Font Awesome kit-->
+    <script src="https://kit.fontawesome.com/43e3be112e.js" crossorigin="anonymous"></script>
+
+  </head>
+
+  
+
+  <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+    
+    <main role="main" class="container">
+              
+        
+          <ul class="nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/ferjavascript">Fer Javascript</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/maikjavascript">Maik Javascript</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/ferhtmx">Fer HTMX</a>
+            </li>
+          </ul>
+        
+      
+      <h1 class="mt-5">Maik y Fer Javascript-Django calculator playground</h1>
+      <p class="lead">Aqui podemos hacer nuestros test de Javascript</p>
+      <p>Estos son los endpoints disponibles</p>
+      <ul>
+        <li>sumar: suma/?op1=4&op2=7</li>
+        <li>restar: resta/?op1=15&op2=5</li>        
+      </ul>
+      <p>para llamar a la API hay que poner suma/ y pasar los parametros op1 y op2, deberia devolver el resultado</p>
+      <a href="/suma/?op1=4&op2=7">ejemplo de suma</a> <br />
+      <a href="/resta/?op1=15&op2=5">ejemplo de resta</a>
+      {% block content %}{% endblock content %}
+    </main>
+  </body>
+</html>
