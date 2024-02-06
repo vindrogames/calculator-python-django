@@ -2,17 +2,42 @@
 {% extends "calculator/base.html" %}
 
 {% block content %}
-<h1 class="mt-4">Fer Javascript</h1>
+<h1  class="text-xl font-medium text-black">Fer Javascript</h1>
 <div>
-  <p>      
+  
       <input id="operando1" type="number" value="7" />
       <input id="operando2" type="number" value="5" />
-      <button onclick="sumar();">sumar</button>
-      <button onclick="restar();">restar</button>
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="sumar();">sumar</button>
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="restar();">restar</button>
       <div id="resultado">
           0
       </div>
-  </p>
+  
+</div>
+<div class="calculator-container">
+    <div id="top-bar" type="text" class="top-bar"></div>    
+    <div class="calculator-buttons">
+        <button id="clear" class="button clear">C</button>
+        <button id="pos-neg" class="button pos-neg">+/-</button>
+        <button id="percent" class="button">%</button>
+        <button id="divide" class="button operator"  onclick="operation_clicked('divide');">&divide;</button>
+        <button id="seven" class="button" value="7" onclick="number_clicked(7);">7</button>
+        <button id="eight" class="button" value="8" onclick="number_clicked(8);">8</button>
+        <button id="nine" class="button" value="9" onclick="number_clicked(9);">9</button>
+        <button id="multiply" class="button operator"  onclick="operation_clicked('mult');">&times;</button>
+        <button id="four" class="button" value="4" onclick="number_clicked(4);">4</button>
+        <button id="five" class="button" value="5" onclick="number_clicked(5);">5</button>
+        <button id="six" class="button" value="6" onclick="number_clicked(6);">6</button>
+        <button id="minus" class="button operator"  onclick="operation_clicked('resta');">&minus; </button>
+        <button id="one" class="button" value="1" onclick="number_clicked(1);">1</button>
+        <button id="two" class="button" value="2" onclick="number_clicked(2);">2</button>
+        <button id="three" class="button" value="3" onclick="number_clicked(3);">3</button>
+        <button id="add" class="button operator" onclick="operation_clicked('add');">&plus;</button>
+        <button id="zero" class="button"  value="0" onclick="number_clicked(0);">0</button>
+        <button id="comma" class="button">,</button>
+        <button id="champions" class="button champions" value="14"><i class="fa-solid fa-trophy"></i></button>
+        <button id="equals" class="button" onclick="operation_clicked('equal');">=</button>
+    </div>
 </div>
 <script type="text/javascript">
   function sumar()
@@ -39,5 +64,73 @@
       xhttp.send();
       elem.innerHTML = xhttp.responseText;                    
   }
+  function number_clicked(number)
+  {
+    const topbar = document.getElementById("top-bar");
+    if (!first_operand_finished)
+    {
+        first_operand = first_operand.concat(number);     
+        topbar.innerHTML = first_operand;    
+    }
+    else if (!second_operand_finished)
+    {
+        second_operand = second_operand.concat(number);     
+        topbar.innerHTML = second_operand;    
+    }
+  }
+
+  function operation_clicked(operation)
+  {
+    
+    if (operation != "equal")
+    {
+        first_operand_finished = true;
+        operation_option = operation;
+    }
+    else
+    {
+        first_operand_finished = true;
+        second_operand_finished = true;        
+        console.log(first_operand);
+        console.log(second_operand);
+        const xhttp = new XMLHttpRequest();
+        const elem = document.getElementById("top-bar");
+        url_backend_op = ""
+        if (operation_option === "add")
+        {
+            url_backend_op = "/suma/"+"?op1="+first_operand+"&op2="+second_operand;
+        }
+        else if (operation_option === "resta")
+        {
+            url_backend_op = "/resta/"+"?op1="+first_operand+"&op2="+second_operand;
+        }
+        else if (operation_option === "mult")
+        {
+            url_backend_op = "/mult/"+"?op1="+first_operand+"&op2="+second_operand;
+        }
+        else if (operation_option === "divide")
+        {
+            url_backend_op = "/divide/"+"?op1="+first_operand+"&op2="+second_operand;
+        }
+        else 
+        {
+            url_backend_op = "/suma/"+"?op1="+first_operand+"&op2="+second_operand;
+        }
+        xhttp.open("GET", url_backend_op, false);
+        xhttp.send();
+        elem.innerHTML = xhttp.responseText; 
+        first_operand_finished = false;
+        second_operand_finished = false;
+        first_operand = elem.innerHTML;
+        second_operand = "";        
+    }        
+  }
+
+  var first_operand = "";
+  var second_operand = "";
+  var first_operand_finished = false;
+  var second_operand_finished = false;
+  var operation_option = "";
+  
 </script>
 {% endblock content %}
