@@ -13,14 +13,10 @@ services:
       - 4000:8000
     env_file:
       - ./env/django.env
-  node_css_packages:
+  tailwind:
     image: "node:lts"
     volumes:
       - ./app/:/usr/app/
     working_dir: /usr/app/        
-    command: >
-      bash -c "npm install && npm run sass"
-
+    command: npx tailwindcss -i calculator/static/calculator/css/maik.css -o calculator/static/calculator/css/main.css --watch
     tty: true
-      
-
