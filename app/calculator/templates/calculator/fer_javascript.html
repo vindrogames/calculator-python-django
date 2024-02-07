@@ -19,7 +19,7 @@
     <div class="calculator-buttons">
         <button id="clear" class="button clear">C</button>
         <button id="pos-neg" class="button pos-neg">+/-</button>
-        <button id="percent" class="button">%</button>
+        <button id="percent" class="button" onclick="operation_clicked('percent');">%</button>
         <button id="divide" class="button operator"  onclick="operation_clicked('divide');">&divide;</button>
         <button id="seven" class="button" value="7" onclick="number_clicked(7);">7</button>
         <button id="eight" class="button" value="8" onclick="number_clicked(8);">8</button>
@@ -82,10 +82,11 @@
   function operation_clicked(operation)
   {
     
-    if (operation != "equal")
+    operation_option = operation;
+    if ((operation != "equal") && (operation != "percent"))
     {
-        first_operand_finished = true;
-        operation_option = operation;
+        first_operand_finished = true;        
+        console.log(operation);
     }
     else
     {
@@ -111,6 +112,10 @@
         else if (operation_option === "divide")
         {
             url_backend_op = "/divide/"+"?op1="+first_operand+"&op2="+second_operand;
+        }
+        else if (operation_option === "percent")
+        {
+            url_backend_op = "/divide/"+"?op1="+first_operand+"&op2="+100;
         }
         else 
         {
