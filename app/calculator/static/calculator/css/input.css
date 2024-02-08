@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.cdnfonts.com/css/calculator');
+
+:root {
+  --real-blue: #004996;
+  --real-red: #e62644;
+  --real-yellow: #fcbf00;
+}
+
+.app-header {
+  display: grid;
+  grid-template-areas: 
+    "title title img"
+    "sub-title sub-title img";
+    width: 100%;
+    border: 3px solid var(--real-yellow);
+    margin-bottom: 1rem;
+    padding: 1rem;
+
+}
+
+.app-header h1 {
+  grid-area: title;
+  text-align: center;
+}
+
+.app-header h2 {
+  grid-area: sub-title;
+  text-align: justify;
+  font-size: 1.3rem;
+}
+
+.app-header i {
+  grid-area: img;
+  padding: 0.3rem;
+}
+
+.calculator-container {
+  padding: 2rem 7rem;
+  background-color: var(--real-blue);
+}
+
+.top-bar {
+  background-color: #fff;
+  border-radius: 0.3rem;
+  border: none;
+  color: #3c3c3c;
+  width: 100%;
+  height: 63px;
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  justify-content: center;
+  padding: 0 1rem;
+  margin-bottom: 1.5rem;
+  font-family: 'Calculator', sans-serif;
+  font-size: 42px;
+}
+
+.calculator-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  place-items: center;
+  grid-gap: 0.7rem;
+  padding: 0 3rem;
+}
+
+.button {
+  background-color: #fff;
+  color: var(--real-blue);
+  border-radius: 50%;
+  width: 100%;
+  aspect-ratio: 1/1;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.5rem;
+  border: none;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: var(--real-yellow);
+  color: #fff;
+}
+
+.champions {
+  color: var(--real-yellow) !important;
+}
+
+.champions:hover {
+  background-color: var(--real-yellow);
+  color: #fff !important;
+}
