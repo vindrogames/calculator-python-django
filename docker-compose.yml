@@ -18,5 +18,5 @@ services:
     volumes:
       - ./app/:/usr/app/
     working_dir: /usr/app/        
-    command: npx tailwindcss -i calculator/static/calculator/css/maik.css -o calculator/static/calculator/css/main.css --watch
+    command: npx tailwindcss -i calculator/static/calculator/css/input.css -o calculator/static/calculator/css/main.css --watch
     tty: true
