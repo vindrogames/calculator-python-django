@@ -706,6 +706,7 @@ video {
 .calculator-container {
   padding: 2rem 7rem;
   background-color: var(--real-blue);
+  width: 60%;
 }
 
 .top-bar {
