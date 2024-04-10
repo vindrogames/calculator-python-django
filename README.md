@@ -7,6 +7,12 @@ fly auth login
 fly deploy
 ```
 
+We have also registered the subdomain rmcalculator on Netlify, and configure the lets encrypt cerificate on fly.io
+
+```
+fly certs add rmcalculator.vindrogames.com
+```
+
 ## HTMX
 
 CSRF error when using Django with HTMX in a post
